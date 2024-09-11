@@ -18,4 +18,5 @@ dates_flasteh = {
     'Kuzuha': '16/12',
     'Warex': '24/12',
     'Nethna': '28/04',
+    'Theynir': '20/12',
 }
