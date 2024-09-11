@@ -17,5 +17,5 @@ dates_flasteh = {
     'Saymel': '09/12',
     'Kuzuha': '16/12',
     'Warex': '24/12',
-    'Test': '11/09',
+    'Nethna': '28/04',
 }
