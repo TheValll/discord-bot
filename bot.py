@@ -49,14 +49,8 @@ async def on_ready():
     # Flasteh server dates
     for ppl in dates_flasteh:
         if dates_flasteh[ppl] == date_formatted:
-            # message = f'@test Happy birthday at {ppl}'
+            message = f'@test Happy birthday at {ppl}'
             channel_id = 960260059810648064
-
-            # Test
-            message = f'@personneencule Happy birthday at {ppl}\n\n'
-            all_birthdays = "\n".join([f"{name}: {date}" for name, date in dates_flasteh.items()])
-            message += f"Upcoming birthdays:\n{all_birthdays}"
-
             channel = client.get_channel(channel_id)
             response = message
             await channel.send(response)
