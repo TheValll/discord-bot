@@ -18,4 +18,5 @@ dates_theval = {
     'Alix': '08/02',
     'Trytox': '02/02',
     'Weebzard': '27/04',
+    'Xarwin': '07/11',
     }
