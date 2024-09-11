@@ -7,4 +7,5 @@ dates_skynoz = {
     'Trytox': '02/02',
     'Weebzard': '27/04',
     'Bastien': '12/02',
+    'Xarwin': '07/11',
 }
