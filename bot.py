@@ -49,7 +49,7 @@ async def on_ready():
     # Flasteh server dates
     for ppl in dates_flasteh:
         if dates_flasteh[ppl] == date_formatted:
-            message = f'@test Happy birthday at {ppl}'
+            message = f'@everyone Happy birthday at {ppl}'
             channel_id = 960260059810648064
             channel = client.get_channel(channel_id)
             response = message
