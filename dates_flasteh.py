@@ -19,4 +19,5 @@ dates_flasteh = {
     'Warex': '24/12',
     'Nethna': '28/04',
     'Theynir': '20/12',
+    'Biotyc': '15/12',
 }
