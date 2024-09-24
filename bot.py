@@ -6,6 +6,8 @@ from dates_theval import dates_theval
 from dates_skynoz import dates_skynoz
 from dates_flasteh import dates_flasteh
 from datetime import datetime
+from skynoz_game import game
+from style import format_game_results
 
 # Get the current date
 date_today = datetime.now()
@@ -56,20 +58,14 @@ async def on_ready():
             await channel.send(response)
             birthday_flasteh += 1
 
-    # Send no birthday if no birthday
-    # if birthday_theval == 0:
-    #     message = f'No birthday today'
-    #     channel_id = 1074125665512734770
-    #     channel = client.get_channel(channel_id)
-    #     response = message
-    #     await channel.send(response)
 
-    # if birthday_skynoz == 0:
-    #     message = f'No birthday today'
-    #     channel_id = 1231734938286559283
-    #     channel = client.get_channel(channel_id)
-    #     response = message
-    #     await channel.send(response)
+    if birthday_skynoz == 0:
+        message = game()
+        message_styled = format_game_results(message)
+        channel_id = 1231734938286559283
+        channel = client.get_channel(channel_id)
+        response = message_styled
+        await channel.send(response)
 
     # Log message when bot is on in TheVal server
     message = f'Bot connected at {date_today}'
