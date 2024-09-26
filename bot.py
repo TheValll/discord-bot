@@ -59,13 +59,20 @@ async def on_ready():
             birthday_flasteh += 1
 
 
-    # if birthday_skynoz == 0:
-    #     message = game()
-    #     message_styled = format_game_results(message)
-    #     channel_id = 1231734938286559283
-    #     channel = client.get_channel(channel_id)
-    #     response = message_styled
-    #     await channel.send(response)
+    if birthday_skynoz == 0:
+        try:
+            message = game()
+            message_styled = format_game_results(message)
+            channel_id = 1231734938286559283
+            channel = client.get_channel(channel_id)
+            response = message_styled
+            await channel.send(response)
+        except Exception as E:
+            message = E
+            channel_id = 960260059810648064
+            channel = client.get_channel(channel_id)
+            response = message
+            await channel.send(response)
 
     # Log message when bot is on in TheVal server
     message = f'Bot connected at {date_today}'
