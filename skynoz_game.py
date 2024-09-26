@@ -29,7 +29,7 @@ def game():
 
 
     # Open leaderboard
-    with open('leaderboard.json', 'r') as file:
+    with open('/home/valentin78_massonniere/discord-bot/bot.py/leaderboard.json', 'r') as file:
         data = json.load(file)
 
 
@@ -41,7 +41,7 @@ def game():
 
 
     # Edit leaderboard
-    with open("leaderboard.json", "w") as outfile:
+    with open("/home/valentin78_massonniere/discord-bot/bot.py/leaderboard.json", "w") as outfile:
         outfile.write(new_leaderboard)
 
 
