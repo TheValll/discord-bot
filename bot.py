@@ -11,10 +11,8 @@ from style import format_game_results
 
 # Get the current date
 date_today = datetime.now()
-real_date = date_today + timedelta(hours=4)
-# date_formatted = date_today.strftime("%d/%m")
-date_formatted = date_today.strftime("%m/%d/%Y, %H:%M:%S")
-print(date_formatted)
+real_date = date_today + timedelta(hours=2)
+date_formatted = real_date.strftime("%d/%m")
 
 # Load the environment variables
 load_dotenv()
