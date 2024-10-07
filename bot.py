@@ -5,12 +5,13 @@ from dotenv import load_dotenv
 from dates_theval import dates_theval
 from dates_skynoz import dates_skynoz
 from dates_flasteh import dates_flasteh
-from datetime import datetime
+from datetime import datetime, timedelta
 from skynoz_game import game
 from style import format_game_results
 
 # Get the current date
 date_today = datetime.now()
+real_date = date_today + timedelta(hours=2)
 date_formatted = date_today.strftime("%d/%m")
 
 # Load the environment variables
