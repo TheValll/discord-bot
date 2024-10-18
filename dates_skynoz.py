@@ -8,5 +8,6 @@ dates_skynoz = {
     'Weebzard': '27/04',
     'Bastien': '12/02',
     'Xarwin': '07/11',
-    'Mael': '16/09'
+    'Mael': '16/09',
+    'Lightingloyz': '18/09',
 }
