@@ -28,6 +28,3 @@ def game():
 
     # Return leaderboard
     return data
-
-for i in range(35):
-    game()
