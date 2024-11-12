@@ -1,4 +1,4 @@
-def format_game_results(game_results):
+def format_game_results(game_results, name, date):
     sorted_results = sorted(game_results.items(), key=lambda x: x[1], reverse=True)
     
     message = "**🏆 Résultats du jeu du GIFT :**\n\n"
@@ -15,4 +15,5 @@ def format_game_results(game_results):
             else:
                 message += f"🔻 **{player}** : {points} point{'s' if points > 1 else ''}\n"
     
+    message += f"Next birthday : {name} the {date}\n"
     return message

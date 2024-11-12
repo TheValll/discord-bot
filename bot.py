@@ -8,6 +8,7 @@ from dates_flasteh import dates_flasteh
 from datetime import datetime, timedelta
 from skynoz_game import game
 from style import format_game_results
+from next_birthday import next_birthday
 
 # Get the current date
 date_today = datetime.now()
@@ -66,7 +67,8 @@ if (current_hour == 23 and current_minute >= 58) or (current_hour == 0 and curre
         if birthday_skynoz == 0:
             try:
                 message = game()
-                message_styled = format_game_results(message)
+                name, date = next_birthday(dates_skynoz, date_today)
+                message_styled = format_game_results(message, name, date)
                 channel_id = 1231734938286559283
                 channel = client.get_channel(channel_id)
                 response = message_styled
