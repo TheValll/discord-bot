@@ -1,7 +1,11 @@
 import json
 import random
 
-def game():
+def game(date):
+    # Christmas game
+    day = date.day
+    month = date.month
+
     # Players
     users = ["Baptiste", "Brian", "Xarwin", "Stoaker", "Mael", "Alix", "Val", "Trytox", "Weebzard", "Mirio", "Kuzuha" , "Lightingloyz", "OOOOOW MY GOD"]
 
@@ -16,7 +20,13 @@ def game():
 
     # Edit leaderboard
     if winner in data:
-        data[winner] += random.randint(1, 10)
+        if month == 12 and day < 25:
+            bonus = random.randint(1, 69)
+            base = random.randint(1, 10)
+            total = round((base * bonus / 100) + base)
+            data[winner] += total
+        else:
+            data[winner] += random.randint(1, 10)
         
     new_leaderboard = json.dumps(data)
 
@@ -25,4 +35,4 @@ def game():
         outfile.write(new_leaderboard)
 
     # Return leaderboard
-    return data
+    return data, winner
