@@ -17,5 +17,5 @@ def format_game_results(game_results, name, date, winner):
     
     message = "\n\n"
     message += f"🐐 {winner} is the gifted of the day !\n"
-    message += f"Next birthday : {name} the {date}\n"
+    message += f"🎂 Next birthday : {name} the {date}\n"
     return message
