@@ -15,7 +15,7 @@ def format_game_results(game_results, name, date, winner):
             else:
                 message += f"🔻 **{player}** : {points} point{'s' if points > 1 else ''}\n"
     
-    message = "\n\n"
+    message += "\n\n"
     message += f"🐐 {winner} is the gifted of the day !\n"
     message += f"🎂 Next birthday : {name} the {date}\n"
     return message
