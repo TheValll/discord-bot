@@ -66,9 +66,9 @@ if (current_hour == 23 and current_minute >= 58) or (current_hour == 0 and curre
 
         if birthday_skynoz == 0:
             try:
-                leaderboard, winner = game(real_date)
+                leaderboard, winner, points, percentage = game(real_date)
                 name, date = next_birthday(dates_skynoz, date_today)
-                message_styled = format_game_results(leaderboard, name, date, winner)
+                message_styled = format_game_results(leaderboard, name, date, winner, points, percentage)
                 channel_id = 1231734938286559283
                 channel = client.get_channel(channel_id)
                 response = message_styled

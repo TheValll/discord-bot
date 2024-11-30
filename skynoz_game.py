@@ -25,8 +25,13 @@ def game(date):
             base = random.randint(1, 10)
             total = round((base * bonus / 100) + base)
             data[winner] += total
+            points = base
+            percentage = bonus
         else:
-            data[winner] += random.randint(1, 10)
+            total = random.randint(1, 10)
+            data[winner] += total
+            points = total
+            percentage = 0
         
     new_leaderboard = json.dumps(data)
 
@@ -35,4 +40,4 @@ def game(date):
         outfile.write(new_leaderboard)
 
     # Return leaderboard
-    return data, winner
+    return data, winner, points, percentage

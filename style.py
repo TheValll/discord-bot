@@ -1,4 +1,4 @@
-def format_game_results(game_results, name, date, winner):
+def format_game_results(game_results, name, date, winner, total_points, percentage):
     sorted_results = sorted(game_results.items(), key=lambda x: x[1], reverse=True)
     
     message = "**🏆 Résultats du jeu du GIFT :**\n\n"
@@ -16,6 +16,9 @@ def format_game_results(game_results, name, date, winner):
                 message += f"🔻 **{player}** : {points} point{'s' if points > 1 else ''}\n"
     
     message += "\n\n"
-    message += f"🐐 {winner} is the gifted of the day !\n"
+    if percentage != 0:
+        message += f"🐐 {winner} is the gifted of the day with {total_points} point(s) and a bonus of {percentage} % = {round((total_points * percentage / 100) + total_points)} !\n"
+    else:
+        message += f"🐐 {winner} is the gifted of the day with {total_points} point(s) !\n"
     message += f"🎂 Next birthday : {name} the {date}\n"
     return message
