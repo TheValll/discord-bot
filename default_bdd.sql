@@ -99,6 +99,7 @@ VALUES (3, 'Casoar', '04/01'),
 
 -- Insertion dans la table clips
 INSERT INTO clips (url) 
-VALUES ('https://example.com/clip1.mp4'),
-       ('https://example.com/clip2.mp4'),
-       ('https://example.com/clip3.mp4');
+VALUES ('https://cdn.discordapp.com/attachments/1317136815060160584/1317136834525921330/trhrthr.mp4?ex=675d96c4&is=675c4544&hm=c98fd48ed15108e20cd2a8cb1c34442ed5f49d58df76cc5326db1c9f75b7fb95&'),
+       ('https://cdn.discordapp.com/attachments/1317136815060160584/1317151259886747749/egergergergergeg.mp4?ex=675da433&is=675c52b3&hm=4c2ac591f10cfd5739ee15f75a23fd059149def8c313160dcab63718bbb8454d&'),
+       ('https://cdn.discordapp.com/attachments/1317136815060160584/1317151378866442260/rhrhrthrthrth_rthrth.mp4?ex=675da450&is=675c52d0&hm=b5951c34af41c09722a2c5117ec709964bb8ba9db90fe35dc82416b64537ecf7&'),
+       ('https://cdn.discordapp.com/attachments/1317136815060160584/1317151412681048135/fwfwefweffwfwefwe.mp4?ex=675da458&is=675c52d8&hm=d6e4b89f8867d6c798afb73ae67cadfff4f22a2b247b24ab193f879827023e4e&');

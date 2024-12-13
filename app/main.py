@@ -7,6 +7,7 @@ from get_birthday import get_birthday
 from skynoz_game import skynoz_game
 from get_next_birthday import get_next_birthday
 from get_channel_id import get_server_id
+from get_clips_random import get_clips_random
 
 # Get the current date
 date_today, real_date, date_formatted, current_hour, current_minute = SpaceTime.get_today()
@@ -46,6 +47,11 @@ if (current_hour == 23 and current_minute >= 58) or (current_hour == 0 and curre
             message = skynoz_game(real_date)
             next_birthday_name, next_birthday_date = get_next_birthday("skynoz", date_today)
             message += f"🎂 Next birthday : {next_birthday_name} the {next_birthday_date}\n"
+
+            # Get a random clip 2 days by month
+            if real_date.day == 15 or real_date.day == 30:
+                message += f"🎬 {get_clips_random(real_date)}\n"
+
             channel_id = get_server_id("skynoz")
             channel = client.get_channel(channel_id)
             await channel.send(message)
