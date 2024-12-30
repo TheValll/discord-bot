@@ -71,6 +71,7 @@ VALUES (2, 'Val', '03/05'),
        (2, 'Xarwin', '07/11'),
        (2, 'Mael', '16/09'),
        (2, 'Lightingloyz', '18/09'),
+       (2, 'Lightingloyz', '16/08'),
        (2, 'Kuzuha', '16/12');
 
 -- Insertion dans la table members pour le serveur 'flasteh'
