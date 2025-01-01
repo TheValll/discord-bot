@@ -24,7 +24,10 @@ async def on_ready():
     channel_id = 1231619459354202112
     channel = client.get_channel(channel_id)
     response = message
-    await channel.send(response)
+    try:
+        await channel.send(response)
+    except Exception as e:
+        print(f"Error sending message to channel {channel_id}: {e}")
 
     # Get birthdays
     birthdays = get_birthday(date_formatted)
@@ -37,7 +40,10 @@ async def on_ready():
             message += f"🎂 Next birthday : {next_birthday_name} the {next_birthday_date}\n"
             channel_id = birthday["channel_id"]
             channel = client.get_channel(channel_id)
-            await channel.send(message)
+            try:
+                await channel.send(message)
+            except Exception as e:
+                print(f"Error sending birthday message to channel {channel_id}: {e}")
             
             if birthday["server_name"] == "skynoz":
                 run_skynoz_game += 1
@@ -53,7 +59,10 @@ async def on_ready():
 
         channel_id = get_server_id("skynoz")
         channel = client.get_channel(channel_id)
-        await channel.send(message)
+        try:
+            await channel.send(message)
+        except Exception as e:
+            print(f"Error sending Skynoz game message to channel {channel_id}: {e}")
 
 # DO NOT LAUNCH ON DEV MODE
 client.run(discord_token)
