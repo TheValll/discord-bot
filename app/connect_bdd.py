@@ -2,6 +2,10 @@
 import os
 import mysql.connector
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # Connect to bdd
 def connect_bdd():
         mysql_host = os.getenv("MYSQL_HOST", "localhost")
