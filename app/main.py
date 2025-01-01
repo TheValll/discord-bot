@@ -8,9 +8,6 @@ from skynoz_game import skynoz_game
 from get_next_birthday import get_next_birthday
 from get_channel_id import get_server_id
 from get_clips_random import get_clips_random
-from dotenv import load_dotenv
-
-load_dotenv()
 
 # Get the current date
 date_today, real_date, date_formatted, current_hour, current_minute = SpaceTime.get_today()
