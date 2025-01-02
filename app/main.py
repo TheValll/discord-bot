@@ -57,7 +57,8 @@ async def on_ready():
         if real_date.day == 15 or real_date.day == 30:
             message += f"🎬 {get_clips_random(real_date)}\n"
 
-        channel_id = get_server_id("skynoz")
+        # channel_id = get_server_id("skynoz")
+        channel_id = 1231619459354202112
         channel = client.get_channel(channel_id)
         try:
             await channel.send(message)
