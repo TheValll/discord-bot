@@ -64,20 +64,20 @@ if (current_hour == 23 and current_minute >= 58) or (current_hour == 0 and curre
                 birthday_flasteh += 1
 
 
-        # if birthday_skynoz == 0:
-        #     try:
-        #         leaderboard, winner, points, percentage = game(real_date)
-        #         name, date = next_birthday(dates_skynoz, date_today)
-        #         message_styled = format_game_results(leaderboard, name, date, winner, points, percentage)
-        #         channel_id = 1231734938286559283
-        #         channel = client.get_channel(channel_id)
-        #         response = message_styled
-        #         await channel.send(response)
-        #     except Exception as E:
-        #         channel_id = 1231619459354202112
-        #         channel = client.get_channel(channel_id)
-        #         response = E
-        #         await channel.send(response)
+        if birthday_skynoz == 0:
+            try:
+                leaderboard, winner, points, percentage = game(real_date)
+                name, date = next_birthday(dates_skynoz, date_today)
+                message_styled = format_game_results(leaderboard, name, date, winner, points, percentage)
+                channel_id = 1231734938286559283
+                channel = client.get_channel(channel_id)
+                response = message_styled
+                await channel.send(response)
+            except Exception as E:
+                channel_id = 1231619459354202112
+                channel = client.get_channel(channel_id)
+                response = E
+                await channel.send(response)
 
         # Log message when bot is on in TheVal server
         message = f'Bot connected at {real_date}'
