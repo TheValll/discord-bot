@@ -19,4 +19,5 @@ dates_theval = {
     'Trytox': '02/02',
     'Weebzard': '27/04',
     'Xarwin': '07/11',
+    'Vanille': '06/03',
     }
