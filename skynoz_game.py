@@ -7,7 +7,7 @@ def game(date):
     month = date.month
 
     # Players
-    users = ["Baptiste", "Brian", "Xarwin", "Stoaker", "Mael", "Alix", "Val", "Trytox", "Weebzard", "Mirio", "Kuzuha" , "Lightingloyz", "OOOOOW MY GOD"]
+    users = ["Baptiste", "Brian", "Xarwin", "Stoaker", "Mael", "Alix", "Val", "Trytox", "Weebzard", "Mirio", "Kuzuha" , "Lightingloyz", "OOOOOW MY GOD", "Asplix"]
 
     weighted_random_index = random.randint(0, len(users) - 1)
 
