@@ -14,6 +14,7 @@ dates_theval = {
     'Lycos': '01/09',
     'Fanny': '10/05',
     'Pierre': '25/04',
+    'David': '25/04',
     'Valentin': '03/05',
     'Alix': '08/02',
     'Trytox': '02/02',
