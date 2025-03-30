@@ -12,7 +12,7 @@ from next_birthday import next_birthday
 
 # Get the current date
 date_today = datetime.now()
-real_date = date_today + timedelta(hours=1)
+real_date = date_today + timedelta(hours=2)
 date_formatted = real_date.strftime("%d/%m")
 current_hour = real_date.hour
 current_minute = real_date.minute
