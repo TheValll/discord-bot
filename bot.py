@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from dates_theval import dates_theval
 from dates_skynoz import dates_skynoz
 from dates_flasteh import dates_flasteh
+from dates_caillou import dates_caillou
 from datetime import datetime, timedelta
 from skynoz_game import game
 from style import format_game_results
@@ -63,6 +64,16 @@ if (current_hour == 23 and current_minute >= 58) or (current_hour == 0 and curre
                 await channel.send(response)
                 birthday_flasteh += 1
 
+        # Caillou server dates
+        for ppl in dates_caillou:
+            if dates_caillou[ppl] == date_formatted:
+                message = f'@everyone Joyeux anniversaire à {ppl}'
+                channel_id = 550357992596307996
+                channel = client.get_channel(channel_id)
+                response = message
+                await channel.send(response)
+                birthday_caillou += 1
+                
 
         if birthday_skynoz == 0:
             try:
