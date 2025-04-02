@@ -2,7 +2,7 @@ dates_theval = {
     'Romane': '08/10',
     'Birdy': '19/12',
     'Chloé ': '04/01',
-    'Richard': '03/04',
+    'Richard': '03/03',
     'Yannick ': '07/07',
     'Laura': '30/09',
     'Clovis': '27/08',
