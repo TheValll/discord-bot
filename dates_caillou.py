@@ -14,5 +14,7 @@ dates_caillou = {
     'Seltexe': '22/07',
     'Rulue': '21/04',
     'Warex': '24/12',
-    'Xiel': '11/09'
+    'Xiel': '11/09',
+    'Mion': '30/10',
+    'Kanoob': '26/08',
 }
