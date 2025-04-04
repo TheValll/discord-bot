@@ -33,6 +33,7 @@ if (current_hour == 23 and current_minute >= 58) or (current_hour == 0 and curre
         birthday_theval = 0
         birthday_skynoz = 0
         birthday_flasteh = 0
+        birthday_caillou = 0
 
         # TheVal server dates
         for ppl in dates_theval:
@@ -68,7 +69,7 @@ if (current_hour == 23 and current_minute >= 58) or (current_hour == 0 and curre
         for ppl in dates_caillou:
             if dates_caillou[ppl] == date_formatted:
                 message = f'@personne Joyeux anniversaire à {ppl}'
-                channel_id = 550357992596307996
+                channel_id = 1233473084258910431
                 channel = client.get_channel(channel_id)
                 response = message
                 await channel.send(response)
