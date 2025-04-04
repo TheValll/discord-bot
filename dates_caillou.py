@@ -16,5 +16,5 @@ dates_caillou = {
     'Warex': '24/12',
     'Xiel': '11/09',
     'Mion': '30/10',
-    'Kanoob': '26/08'
+    'Kanoob': '26/08',
 }
