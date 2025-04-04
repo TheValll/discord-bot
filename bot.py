@@ -18,7 +18,7 @@ date_formatted = real_date.strftime("%d/%m")
 current_hour = real_date.hour
 current_minute = real_date.minute
 
-if (current_hour == 23 and current_minute >= 58) or (current_hour == 0 and current_minute <= 5):
+if (current_hour == 23 and current_minute >= 58) or (current_hour == 0 and current_minute <= 50):
     # Load the environment variables
     load_dotenv()
     TOKEN = os.getenv('DISCORD_TOKEN')
