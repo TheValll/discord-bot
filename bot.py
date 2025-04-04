@@ -18,7 +18,7 @@ date_formatted = real_date.strftime("%d/%m")
 current_hour = real_date.hour
 current_minute = real_date.minute
 
-if (current_hour == 23 and current_minute >= 58) or (current_hour == 0 and current_minute <= 50):
+if (current_hour == 23 and current_minute >= 58) or (current_hour == 0 and current_minute <= 10):
     # Load the environment variables
     load_dotenv()
     TOKEN = os.getenv('DISCORD_TOKEN')
@@ -68,8 +68,8 @@ if (current_hour == 23 and current_minute >= 58) or (current_hour == 0 and curre
         # Caillou server dates
         for ppl in dates_caillou:
             if dates_caillou[ppl] == date_formatted:
-                message = f'@personne Joyeux anniversaire à {ppl}'
-                channel_id = 1233473084258910431
+                message = f'@everyone Joyeux anniversaire à {ppl}'
+                channel_id = 550357992596307996
                 channel = client.get_channel(channel_id)
                 response = message
                 await channel.send(response)
