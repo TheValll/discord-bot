@@ -4,5 +4,6 @@ dates_cabane = {
     'Cece': '18/11',
     'Val': '03/03',
     'Xel': '05/03',
-    'Lola'': '01/03',
+    'Lola': '01/03',
+    'Test fait pas gaf': '06/10',
 }

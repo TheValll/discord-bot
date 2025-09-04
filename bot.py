@@ -6,6 +6,7 @@ from dates_theval import dates_theval
 from dates_skynoz import dates_skynoz
 from dates_flasteh import dates_flasteh
 from dates_caillou import dates_caillou
+from dates_cabane import dates_cabane
 from datetime import datetime, timedelta
 from skynoz_game import game
 from style import format_game_results
@@ -34,6 +35,7 @@ if (current_hour == 23 and current_minute >= 58) or (current_hour == 0 and curre
         birthday_skynoz = 0
         birthday_flasteh = 0
         birthday_caillou = 0
+        birthday_cabane = 0
 
         # TheVal server dates
         for ppl in dates_theval:
@@ -74,6 +76,16 @@ if (current_hour == 23 and current_minute >= 58) or (current_hour == 0 and curre
                 response = message
                 await channel.send(response)
                 birthday_caillou += 1
+
+        # Cabane server dates
+        for ppl in dates_cabane:
+            if dates_cabane[ppl] == date_formatted:
+                message = f'@everyone Joyeux anniversaire à {ppl}'
+                channel_id = 1192623154951098560
+                channel = client.get_channel(channel_id)
+                response = message
+                await channel.send(response)
+                birthday_cabane += 1
                 
 
         if birthday_skynoz == 0:
