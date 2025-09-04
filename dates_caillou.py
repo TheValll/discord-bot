@@ -6,7 +6,7 @@ dates_caillou = {
     'Lightedd': '28/10',
     'Perfect': '07/03',
     'Axel': '04/02',
-    'Vanille': '06/05',
+    'Vanille': '06/03',
     'Fannox': '24/02',
     'Suly': '14/03',
     'Le CSC': '18/05',
