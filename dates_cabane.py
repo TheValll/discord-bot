@@ -6,5 +6,6 @@ dates_cabane = {
     'Xel': '05/05',
     'Lola': '01/05',
     'Zayn': '19/02',
-    'Test fait pas gaf': '06/10',
+    'Ellie': '14/02',
+    'Test fait pas gaf': '07/10',
 }
