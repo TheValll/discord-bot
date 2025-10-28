@@ -15,7 +15,7 @@ from word_generator import get_random
 
 # Get the current date
 date_today = datetime.now()
-real_date = date_today + timedelta(hours=2)
+real_date = date_today + timedelta(hours=1)
 date_formatted = real_date.strftime("%d/%m")
 current_hour = real_date.hour
 current_minute = real_date.minute
@@ -115,3 +115,4 @@ if (current_hour == 23 and current_minute >= 58) or (current_hour == 0 and curre
     client.run(TOKEN)
 else:
     print("DEV MODE !!")
+
