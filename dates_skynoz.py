@@ -11,4 +11,6 @@ dates_skynoz = {
     'Mael': '16/09',
     'Lightingloyz': '18/09',
     'Asplix': '16/08',
+    'Kuzuha': '16/12',
 }
+
