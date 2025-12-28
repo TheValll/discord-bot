@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: ./bot/Dockerfile
+    container_name: discord-bot
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - CHANNEL_LOG_ID=${CHANNEL_LOG_ID}
+      - SKYNOZ_CHANNEL_ID=${SKYNOZ_CHANNEL_ID}
+    volumes:
+      - ./data:/app/data
+    networks:
+      - discord-network
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: ./web/Dockerfile
+    container_name: discord-dashboard
+    environment:
+      - FLASK_APP=dashboard.py
+      - FLASK_ENV=production
+    ports:
+      - "3018:3018"
+    volumes:
+      - ./data:/app/data
+    networks:
+      - discord-network
+    restart: unless-stopped
+    depends_on:
+      - bot
+
+networks:
+  discord-network:
+    driver: bridge
