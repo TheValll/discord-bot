@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bot Birthday Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 30px 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .header {
+        text-align: center;
+        color: white;
+        margin-bottom: 40px;
+        animation: fadeInDown 0.6s ease;
+      }
+
+      .header h1 {
+        font-size: 3em;
+        font-weight: 700;
+        text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        margin-bottom: 10px;
+      }
+
+      .header p {
+        font-size: 1.1em;
+        opacity: 0.9;
+      }
+
+      .container-main {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .card {
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        margin-bottom: 30px;
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.95);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+      }
+
+      .card-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 25px;
+        font-size: 1.5em;
+        font-weight: 600;
+        border: none;
+      }
+
+      .card-body {
+        padding: 30px;
+      }
+
+      .server-section {
+        background: linear-gradient(to right, #f5f7fa 0%, #ffffff 100%);
+        border-left: 5px solid #667eea;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+
+      .server-section:hover {
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        border-left: 5px solid #764ba2;
+      }
+
+      .server-section.collapsed {
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+      }
+
+      .server-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        flex-wrap: wrap;
+        gap: 15px;
+        cursor: pointer;
+        user-select: none;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+        transition: all 0.3s ease;
+      }
+
+      .server-header:hover {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+      }
+
+      .server-title-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex: 1;
+      }
+
+      .toggle-icon {
+        font-size: 1.3em;
+        color: #667eea;
+        transition: transform 0.3s ease;
+        min-width: 30px;
+      }
+
+      .toggle-icon.collapsed {
+        transform: rotate(-90deg);
+      }
+
+      .server-content {
+        padding: 20px;
+        max-height: 2000px;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+        opacity: 1;
+      }
+
+      .server-content.collapsed {
+        max-height: 0;
+        padding: 0 20px;
+        opacity: 0;
+      }
+
+      .server-actions {
+        display: flex;
+        gap: 10px;
+      }
+
+      .server-title {
+        font-size: 1.4em;
+        font-weight: 700;
+        color: #667eea;
+      }
+
+      .server-id {
+        color: #999;
+        font-size: 0.9em;
+        font-weight: 500;
+      }
+
+      .member-item {
+        background: white;
+        border: 2px solid #f0f0f0;
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+      }
+
+      .member-item:hover {
+        border-color: #667eea;
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+      }
+
+      .member-info {
+        flex: 1;
+      }
+
+      .member-name {
+        font-weight: 600;
+        color: #333;
+        font-size: 1.05em;
+      }
+
+      .member-birthday {
+        color: #764ba2;
+        font-weight: 500;
+        font-size: 0.95em;
+        margin-top: 4px;
+      }
+
+      .member-actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .btn-edit {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 16px;
+        font-size: 0.9em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+      }
+
+      .btn-edit:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        color: white;
+        text-decoration: none;
+      }
+
+      .btn-delete {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 16px;
+        font-size: 0.9em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+      }
+
+      .btn-delete:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
+        color: white;
+        text-decoration: none;
+      }
+
+      .btn-success-custom {
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-success-custom:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(17, 153, 142, 0.4);
+        color: white;
+        text-decoration: none;
+      }
+
+      .edit-form {
+        display: none;
+        background: linear-gradient(135deg, #e0f7ff 0%, #f0e7ff 100%);
+        border: 2px solid #667eea;
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 12px;
+        animation: slideDown 0.3s ease;
+      }
+
+      .edit-form.show {
+        display: block;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .form-control {
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 1em;
+        transition: all 0.3s ease;
+      }
+
+      .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.1);
+        outline: none;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .form-row > div {
+        flex: 1;
+        min-width: 150px;
+      }
+
+      .add-member-form {
+        background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+        border: 2px dashed #667eea;
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      .add-server-section {
+        background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+        border-radius: 12px;
+        border: 2px dashed #38ef7d;
+        padding: 25px;
+        margin-top: 30px;
+      }
+
+      .add-server-title {
+        font-size: 1.3em;
+        font-weight: 700;
+        color: #38ef7d;
+        margin-bottom: 20px;
+      }
+
+      .logs-container {
+        background: #1a1a1a;
+        color: #00ff00;
+        border-radius: 12px;
+        padding: 20px;
+        font-family: 'Courier New', monospace;
+        max-height: 400px;
+        overflow-y: auto;
+        font-size: 0.9em;
+        line-height: 1.6;
+      }
+
+      .logs-container::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .logs-container::-webkit-scrollbar-track {
+        background: #333;
+      }
+
+      .logs-container::-webkit-scrollbar-thumb {
+        background: #667eea;
+        border-radius: 4px;
+      }
+
+      .votes-list {
+        list-style: none;
+      }
+
+      .vote-item {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        font-size: 0.9em;
+        font-weight: 500;
+      }
+
+      .no-members {
+        color: #999;
+        font-style: italic;
+        padding: 15px;
+        text-align: center;
+      }
+
+      .badge-custom {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.85em;
+        font-weight: 600;
+      }
+
+      @media (max-width: 768px) {
+        .header h1 {
+          font-size: 2em;
+        }
+
+        .member-actions {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .btn-edit,
+        .btn-delete {
+          width: 100%;
+        }
+
+        .form-row > div {
+          min-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>🎂 Birthday Bot Manager</h1>
+      <p>Gérez vos anniversaires avec style</p>
+    </div>
+
+    <div class="container-main">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-calendar-alt"></i> Serveurs & Membres
+            </div>
+            <div class="card-body">
+              {% if birthdays %}
+              {% for key, info in birthdays.items() %}
+              <div class="server-section" id="server-{{ key }}">
+                <div class="server-header" onclick="toggleServer('{{ key }}')">
+                  <div class="server-title-wrapper">
+                    <i class="fas fa-chevron-down toggle-icon" id="toggle-icon-{{ key }}"></i>
+                    <div>
+                      <div class="server-title">
+                        <i class="fas fa-server"></i> {{ info.server_name }}
+                      </div>
+                      <div class="server-id">
+                        <span class="badge-custom">{{ info.channel_id }}</span>
+                        <span style="margin-left: 10px; color: #999">{{ info.members|length }} membre{{ info.members|length != 1 and 's' or '' }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="server-actions" onclick="event.stopPropagation()">
+                    <form action="/delete_server/{{ key }}" method="POST" style="margin: 0">
+                      <button
+                        type="submit"
+                        class="btn-delete"
+                        onclick="return confirm('Supprimer ce serveur et tous ses membres ?')"
+                      >
+                        <i class="fas fa-trash"></i> Supprimer
+                      </button>
+                    </form>
+                  </div>
+                </div>
+
+                <div class="server-content" id="content-{{ key }}">
+
+                {% if info.members|length > 0 %}
+                <div style="margin-bottom: 20px">
+                  {% for m in info.members %}
+                  <div id="member-{{ key }}-{{ loop.index0 }}">
+                    <div class="member-item">
+                      <div class="member-info">
+                        <div class="member-name">👤 {{ m.name }}</div>
+                        <div class="member-birthday">
+                          <i class="fas fa-birthday-cake"></i> {{ m.birthday }}
+                        </div>
+                      </div>
+                      <div class="member-actions">
+                        <button
+                          type="button"
+                          class="btn-edit"
+                          onclick="toggleEdit('{{ key }}', {{ loop.index0 }})"
+                        >
+                          <i class="fas fa-edit"></i> Éditer
+                        </button>
+                        <form
+                          action="/delete_member/{{ key }}/{{ loop.index0 }}"
+                          method="POST"
+                          style="margin: 0"
+                        >
+                          <button
+                            type="submit"
+                            class="btn-delete"
+                            onclick="return confirm('Supprimer cette personne ?')"
+                          >
+                            <i class="fas fa-trash"></i>
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+
+                    <div
+                      class="edit-form"
+                      id="edit-form-{{ key }}-{{ loop.index0 }}"
+                    >
+                      <form
+                        action="/edit_member/{{ key }}/{{ loop.index0 }}"
+                        method="POST"
+                      >
+                        <div class="form-row">
+                          <div>
+                            <input
+                              type="text"
+                              name="name"
+                              value="{{ m.name }}"
+                              placeholder="Nom"
+                              class="form-control"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <input
+                              type="text"
+                              name="date"
+                              value="{{ m.birthday }}"
+                              placeholder="JJ/MM"
+                              class="form-control"
+                              required
+                            />
+                          </div>
+                        </div>
+                        <div style="display: flex; gap: 10px; margin-top: 12px">
+                          <button type="submit" class="btn-success-custom">
+                            <i class="fas fa-save"></i> Sauvegarder
+                          </button>
+                          <button
+                            type="button"
+                            class="btn-delete"
+                            onclick="toggleEdit('{{ key }}', {{ loop.index0 }})"
+                          >
+                            <i class="fas fa-times"></i> Annuler
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+                {% else %}
+                <div class="no-members">
+                  <i class="fas fa-inbox"></i> Aucun membre ajouté
+                </div>
+                {% endif %}
+
+                <form action="/add_member" method="POST" class="add-member-form">
+                  <input type="hidden" name="server_key" value="{{ key }}" />
+                  <div class="form-row">
+                    <div>
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Nom de la personne"
+                        class="form-control"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        name="date"
+                        placeholder="JJ/MM"
+                        class="form-control"
+                        required
+                      />
+                    </div>
+                    <div style="display: flex; align-items: center">
+                      <button type="submit" class="btn-success-custom w-100">
+                        <i class="fas fa-plus"></i> Ajouter
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              {% endfor %} {% else %}
+              <div class="no-members" style="padding: 40px">
+                <i class="fas fa-plus-circle" style="font-size: 2em"></i>
+                <p style="margin-top: 15px">Aucun serveur créé. Commencez ci-dessous !</p>
+              </div>
+              {% endif %}
+
+              <div class="add-server-section">
+                <div class="add-server-title">
+                  <i class="fas fa-plus"></i> Créer un nouveau serveur
+                </div>
+                <form action="/add_server" method="POST">
+                  <div class="form-row">
+                    <div>
+                      <input
+                        type="text"
+                        name="key"
+                        placeholder="ID technique (ex: cabane)"
+                        class="form-control"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        name="server_name"
+                        placeholder="Nom du serveur"
+                        class="form-control"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <input
+                        type="number"
+                        name="channel_id"
+                        placeholder="ID Salon Discord"
+                        class="form-control"
+                        required
+                      />
+                    </div>
+                    <div style="display: flex; align-items: center">
+                      <button type="submit" class="btn-success-custom w-100">
+                        <i class="fas fa-check"></i> Créer
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-poll"></i> Votes du jour
+              <span class="badge-custom" style="float: right">
+                {{ votes|length }}
+              </span>
+            </div>
+            <div class="card-body">
+              {% if votes %}
+              <ul class="votes-list">
+                {% for uid, date in votes.items() %}
+                <li class="vote-item">
+                  <i class="fas fa-user"></i> ID: <strong>{{ uid }}</strong>
+                  <br />
+                  <i class="fas fa-calendar"></i> {{ date }}
+                </li>
+                {% endfor %}
+              </ul>
+              {% else %}
+              <div class="no-members">
+                <i class="fas fa-thumbs-up"></i>
+                <p>Aucun vote pour le moment</p>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-terminal"></i> Derniers Logs
+            </div>
+            <div class="card-body" style="padding: 0">
+              <div class="logs-container">
+                {% if logs %} {% for line in logs %}{{ line }}{% endfor %} {% else
+                %}Aucun log pour le moment{% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleEdit(key, index) {
+        const form = document.getElementById(`edit-form-${key}-${index}`);
+        form.classList.toggle('show');
+      }
+
+      function toggleServer(key) {
+        const section = document.getElementById(`server-${key}`);
+        const content = document.getElementById(`content-${key}`);
+        const icon = document.getElementById(`toggle-icon-${key}`);
+
+        section.classList.toggle('collapsed');
+        content.classList.toggle('collapsed');
+        icon.classList.toggle('collapsed');
+      }
+    </script>
+  </body>
+</html>
