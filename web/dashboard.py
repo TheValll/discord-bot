@@ -5,9 +5,9 @@ import os
 app = Flask(__name__)
 
 # Chemins des fichiers
-BIRTHDAYS_FILE = 'birthdays.json'
-VOTES_FILE = 'votes.json'
-LOGS_FILE = 'game_logs.txt'
+BIRTHDAYS_FILE = '../data/birthdays.json'
+VOTES_FILE = '../data/votes.json'
+LOGS_FILE = '../data/game_logs.txt'
 
 def load_json(path):
     if not os.path.exists(path):

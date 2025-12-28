@@ -90,19 +90,23 @@ async def gift(interaction: discord.Interaction):
         await interaction.response.send_message("Cette commande n'est utilisable que dans le salon dédié.", ephemeral=True)
         return
 
+    await interaction.response.defer(ephemeral=False)
+
     user_id = str(interaction.user.id)
     today = Utils.get_date(True)
     
     votes = SkynozGame.load_json(SkynozGame.VOTES_PATH)
     if user_id in votes and votes[user_id] == today:
-        await interaction.response.send_message("Tu as déjà participé aujourd'hui !", ephemeral=True)
+        await interaction.followup.send("Tu as déjà participé aujourd'hui !", ephemeral=True)
         return
+
     target, pts = SkynozGame.add_points_random(interaction.user.name)
     
     if target:
         votes[user_id] = today
         SkynozGame.save_json(SkynozGame.VOTES_PATH, votes)
+        await interaction.followup.send(f"Commande effectuée!")
     else:
-        await interaction.response.send_message("Erreur lors de l'attribution des pts.", ephemeral=True)
+        await interaction.followup.send("Erreur lors de l'attribution des pts.", ephemeral=True)
 
 bot.run(Utils.get_token())

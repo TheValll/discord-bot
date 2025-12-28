@@ -32,7 +32,7 @@ class Utils:
 class Birthday:
     @staticmethod
     def load_birthday_data():
-        with open('birthdays.json', 'r', encoding='utf-8') as f:
+        with open('data/birthdays.json', 'r', encoding='utf-8') as f:
             return json.load(f)
         
     @staticmethod
@@ -97,9 +97,9 @@ class Birthday:
         return upcoming_members
     
 class SkynozGame:
-    LEADERBOARD_PATH = "leaderboard.json"
-    VOTES_PATH = "votes.json"
-    LOG_PATH = "game_logs.txt"
+    LEADERBOARD_PATH = "data/leaderboard.json"
+    VOTES_PATH = "data/votes.json"
+    LOG_PATH = "data/game_logs.txt"
     SKYNOZ_CHANNEL_ID = Utils.get_channel_skynoz_id()
     PLAYERS = ["Baptiste", "Brian", "Xarwin", "Stoaker", "Mael", "Alix", "Val", "Trytox", "Weebzard", "Mirio", "Kuzuha", "Lightingloyz", "OOOOOW MY GOD", "Asplix"]
 
