@@ -10,7 +10,7 @@ LOG_CHANNEL_ID = Utils.get_channel_log_id()
 async def check_birthday_task():
     now = Utils.get_date(False)
 
-    if now.hour == 0 and now.minute == 0:
+    if now.hour == 1 and now.minute == 0:
         log_channel = bot.get_channel(LOG_CHANNEL_ID)
         birthdays = Birthday.get_birthdays_by_date(now)
         

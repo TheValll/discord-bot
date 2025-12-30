@@ -4,10 +4,14 @@ import random
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
+# Get the absolute path to the data directory
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.join(BASE_DIR, 'data')
+
 class Utils:
     @staticmethod
     def get_date(formatted=False):
-        date_today = datetime.now() + timedelta(hours=2)
+        date_today = datetime.now() + timedelta(hours=0)
         if formatted:
             return date_today.strftime("%d/%m")
         return date_today
@@ -32,7 +36,8 @@ class Utils:
 class Birthday:
     @staticmethod
     def load_birthday_data():
-        with open('data/birthdays.json', 'r', encoding='utf-8') as f:
+        path = os.path.join(DATA_DIR, 'birthdays.json')
+        with open(path, 'r', encoding='utf-8') as f:
             return json.load(f)
         
     @staticmethod
@@ -97,9 +102,9 @@ class Birthday:
         return upcoming_members
     
 class SkynozGame:
-    LEADERBOARD_PATH = "data/leaderboard.json"
-    VOTES_PATH = "data/votes.json"
-    LOG_PATH = "data/game_logs.txt"
+    LEADERBOARD_PATH = os.path.join(DATA_DIR, "leaderboard.json")
+    VOTES_PATH = os.path.join(DATA_DIR, "votes.json")
+    LOG_PATH = os.path.join(DATA_DIR, "game_logs.txt")
     SKYNOZ_CHANNEL_ID = Utils.get_channel_skynoz_id()
     PLAYERS = ["Baptiste", "Brian", "Xarwin", "Stoaker", "Mael", "Alix", "Val", "Trytox", "Weebzard", "Mirio", "Kuzuha", "Lightingloyz", "OOOOOW MY GOD", "Asplix"]
 
